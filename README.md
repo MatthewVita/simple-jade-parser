@@ -3,7 +3,7 @@ Simple-Jade-Parser is a convenience library that makes working with Jade even ea
 
 ##Usage
 
-#### Basic Example
+##### Basic Example
 ```javascript
 var simpleJadeParser = require('simple-jade-parser');
 
@@ -20,7 +20,7 @@ simpleJadeParser({
 });
 ```
 
-#### More Interesting Example
+##### More Interesting Example
 ```javascript
 var express = require('express');
 var app = express();
@@ -42,6 +42,9 @@ app.get('/zoo/animals/:type', function(req, res) {
 
 var server = app.listen(3000);
 ```
+
+##Tests
+```$ npm test```
 
 ##License
 MIT
