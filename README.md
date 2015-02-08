@@ -1,6 +1,11 @@
 #Simple-Jade-Parser
 Simple-Jade-Parser is a convenience library that makes working with Jade even easier. It serves as the sole reference point for rendering Jade files with a simple API that uses promises, has great error handling, and helps with "fractal design" in frameworks like Express as opposed to having a single `views/` directory.
 
+##Install
+```shell
+npm install simple-jade-parser
+```
+
 ##Usage
 
 ##### Basic Example
