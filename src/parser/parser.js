@@ -46,7 +46,7 @@ module.exports = function(jadeConf) {
     /**
      * Enters current working directory
      * to ensure the Jade file is valid
-     * @return {[type]} [description]
+     * @return {Q.promise}
      */
     self.validate = function() {
         var dfd = Q.defer();
