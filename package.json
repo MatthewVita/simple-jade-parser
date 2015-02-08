@@ -1,7 +1,11 @@
 {
   "name": "simple-jade-parser",
   "version": "0.0.1",
-  "description": "Simple-Jade-Parser is a convenience library that makes working with Jade even easier. It serves as the sole reference point for rendering Jade files with a simple API that uses promises, has great error handling, and helps with \"fractal design\" in frameworks like Express as opposed to have a single `views/` directory.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MatthewVita/simple-jade-parser.git"
+  },
+  "description": "Simple-Jade-Parser is a convenience library that makes working with Jade even easier. It serves as the sole reference point for rendering Jade files with a simple API that uses promises, has great error handling, and helps with \"fractal design\" in frameworks like Express as opposed to having a single `views/` directory.",
   "main": "src/parser/parser.js",
   "scripts": {
     "test": "cd ./src/parser/test/ && node parser_test.js"
