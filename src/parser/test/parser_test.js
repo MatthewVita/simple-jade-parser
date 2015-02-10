@@ -8,7 +8,7 @@ async.series([
     function(state) {
         testId = 'it should show valid HTML';
         simpleJadeParser({
-                file: './foo.jade'
+                file: './fixtures/foo.jade'
             })
             .then(function(res) {
                 if (res === '<h1></h1>') {
@@ -24,7 +24,7 @@ async.series([
     function(state) {
         testId = 'it should show valid rendered HTML';
         simpleJadeParser({
-                file: './foo.jade',
+                file: './fixtures/foo.jade',
                 data: {
                     foo: 'bar'
                 }
@@ -59,7 +59,7 @@ async.series([
     function(state) {
         testId = 'it should ask to supply a valid file';
         simpleJadeParser({
-                file: './asdfasdfasdf.jade',
+                file: './fixtures/asdfasdfasdf.jade',
                 data: {
                     foo: 'bar'
                 }
@@ -76,7 +76,7 @@ async.series([
     function(state) {
         testId = 'it should include a Jade file';
         simpleJadeParser({
-                file: './bar.jade'
+                file: './fixtures/bar.jade'
             })
             .then(function(res) {
                 if (res === '<p>baz</p><h1></h1>') {
@@ -92,13 +92,29 @@ async.series([
     function(state) {
         testId = 'it should include a Jade file with data';
         simpleJadeParser({
-                file: './bar.jade',
+                file: './fixtures/bar.jade',
                 data: {
                     foo: 'bar'
                 }
             })
             .then(function(res) {
                 if (res === '<p>baz</p><h1>bar</h1>') {
+                    state(null, testId);
+                } else {
+                    state(testId, null);
+                }
+            })
+            .catch(function(err) {
+                state(testId, null);
+            });
+    },
+    function(state) {
+        testId = 'it should include a Jade file many levels down';
+        simpleJadeParser({
+                file: './fixtures/a/b/c.jade'
+            })
+            .then(function(res) {
+                if (res === '<h1></h1>') {
                     state(null, testId);
                 } else {
                     state(testId, null);

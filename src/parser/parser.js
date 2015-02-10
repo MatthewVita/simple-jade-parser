@@ -59,7 +59,7 @@ module.exports = function(jadeConf) {
 
         var lookupCheck = function() {
             //makes the file fully qualified
-            self.file = path.resolve(process.cwd(), self.file);
+            self.file = path.resolve(path.dirname(module.parent.filename), self.file);
 
             fileExists(self.file)
                 .then(function(res) {
