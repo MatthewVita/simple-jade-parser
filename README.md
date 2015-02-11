@@ -36,6 +36,9 @@ app.get('/zoo/animals/:type', function(req, res) {
         file: './zoo/animals/template.jade',
         data: {
             type: req.params.type
+        },
+        opts: {
+            pretty: true
         }
     }).then(function(html) {
         res.status(200).send(html);

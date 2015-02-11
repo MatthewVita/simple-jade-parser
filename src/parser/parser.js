@@ -3,6 +3,7 @@ var jade = require('jade');
 var path = require('path');
 var fs = require('fs');
 var fileExists = Q.denodeify(fs.stat);
+var merge = require('merge');
 
 module.exports = function(jadeConf) {
     var self = this;
@@ -11,6 +12,7 @@ module.exports = function(jadeConf) {
 
     self.file = jadeConf.file || false;
     self.data = jadeConf.data || {}; //optional param
+    self.opts = jadeConf.opts || {}; //optional param
 
     /**
      * First validates the parameters and then
@@ -26,7 +28,8 @@ module.exports = function(jadeConf) {
 
         var finalize = function() {
             try {
-                dfd.resolve(jade.renderFile(file, data));
+                self.data = merge(self.data, jadeConf.opts);
+                dfd.resolve(jade.renderFile(self.file, self.data));
             } catch (e) {
                 dfd.reject('Could not render');
             }

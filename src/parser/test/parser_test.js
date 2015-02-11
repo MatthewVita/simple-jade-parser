@@ -123,6 +123,25 @@ async.series([
             .catch(function(err) {
                 state(testId, null);
             });
+    },
+    function(state) {
+        testId = 'it should include a Jade options object to pretty print';
+        simpleJadeParser({
+                file: './fixtures/fancy.jade',
+                opts: {
+                    pretty: true
+                }
+            })
+            .then(function(res) {
+                if (res.indexOf('\n') > -1) {
+                    state(null, testId);
+                } else {
+                    state(testId, null);
+                }
+            })
+            .catch(function(err) {
+                state(testId, null);
+            });
     }
 ], function(err, res) {
     if (err) {
